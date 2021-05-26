@@ -41,18 +41,40 @@ function App() {
   ]
 
   return (
-    <div className='main'>
-      <div className='question'>
-        {questions.map(question => 
-          <div>
-            <h1>{question.questionText}</h1>
-            {question.answerOptions.map(answer => <p>{answer.answerText}</p>)}
-          </div>)}
+    <div className="wrapper">
+      <div className="main">
+        <form>
+            <div className="section section-basic" id="basic-elements">
+                <div className="container">
+                    <h3 className="title">Quiz Form</h3>
+                    <div className="space-70"></div>
+
+                    {questions.map(question =>
+                        <Fragment>
+                        <p><strong>{question.questionText}</strong></p>
+                        <div className="row" id="checkRadios">
+                            <div className="col-xl-8 col-lg-3 mb-4">
+                            {question.answerOptions.map(answer => 
+                                <div className="form-check">
+                                    <label className="form-check-label">
+                                        <input className="form-check-input" type="checkbox" />
+                                        <span className="form-check-sign"></span>
+                                        {answer.answerText}
+                                    </label>
+                                </div>)}
+                            </div>
+                        </div>
+                        </Fragment>)}
+                              
+                        <button type="submit" class="btn btn-primary ml-0">Submit</button>        
+                </div>
+            </div> 
+        </form>
       </div>
     </div>
 
 
-  );
+  )
 }
 
 export default App;
